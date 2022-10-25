@@ -8,9 +8,21 @@
 </head>
 <body>
 
-<h2>User Info</h2>
+<h2>User about our request</h2>
 <div>IP Address:<th:block th:text="${ipAddress}"></th:block></div>
 <div>Client Agent:<th:block th:text="${clientAgent}"></th:block></div>
+
+<th:block th:if="${session.user!=null}">
+<h2>Info about user</h2>
+<div>Username:<th:block th:text="${session.user.username}"></th:block></div>
+<div>Name:<th:block th:text="${session.user.name}"></th:block></div>
+<div>
+    <a href="/logout">Logout</a>
+</div>
+
+</th:block>
+
+
 <h2>Category List</h2>
 <ul>
   <li th:each="category: ${categories}"><th:block th:text="${category.name} "></th:block>(<th:block th:text="${category.description}"></th:block>)  </li>
